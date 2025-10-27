@@ -1,0 +1,39 @@
+[project]
+name = "pi-day-2026-with-py"
+version = "0.1.0"
+description = "Experiment with series that produce digits of π using python utilizing as many CPU cores as available"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "autopep8>=2.3.2",
+    "flake8>=7.3.0",
+    "mypy>=1.18.2",
+]
+
+[tool.autopep8]
+max-doc-length = 140
+max-line-length = 140
+
+[tool.isort]
+multi_line_output = 3
+
+[tool.pyright]
+typeCheckingMode = "standard"
+# ignore = ["*"]
+
+[tool.mypy]
+mypy_path = "core/ pi-day-2026/"
+check_untyped_defs = true
+disallow_any_generics = false # until Generics union types are supported
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = true

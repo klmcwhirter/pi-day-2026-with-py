@@ -1,0 +1,11 @@
+scripts:
+
+- name: enable-dev
+  is-local: false
+  options:
+    pkgs: autopep8 flake8 mypy
+
+- name: gitignore
+  is-local: false
+  options:
+    features: python
