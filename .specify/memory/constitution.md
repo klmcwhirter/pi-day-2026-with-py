@@ -1,50 +1,65 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+
+<!--
+Sync Impact Report
+Version change: 0.0.0 → 1.0.0
+Modified principles: All placeholders replaced with concrete principles
+Added sections: Non-Functional Requirements (NFRs)
+Removed sections: None
+Templates requiring updates: plan-template.md (✅), spec-template.md (✅), tasks-template.md (✅), checklist-template.md (✅), agent-file-template.md (✅)
+-->
+
+# pi-day-2026-with-py Constitution
+
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Python & Django Foundation
+Every application component MUST be implemented in Python (>=3.14) using Django (>=5.2) as the primary web framework. All code must follow Django and typical Python standards, with project-specific overrides as documented in NFRs.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Command-Line and Web Interface
+All major features MUST be accessible via both Django web UI and command-line interface (CLI) where feasible. CLI tools must use `uv` and `uvextras` from $PATH. Web UI must use TailwindCSS (>=4.1) utility classes for styling.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Test-First Discipline (NON-NEGOTIABLE)
+Test-driven development is mandatory. All business logic MUST be covered by tests before implementation. UI testing is discouraged; focus on business logic. Red-Green-Refactor cycle is strictly enforced.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Observability & Simplicity
+Structured logging MUST be implemented for all critical operations. Simplicity is prioritized: avoid unnecessary abstraction, prefer clear and direct solutions. TailwindCSS utility classes are preferred over custom CSS.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Versioning & Breaking Changes
+Semantic versioning (MAJOR.MINOR.PATCH) is required. Any breaking change or principle redefinition triggers a MAJOR version bump. New principles or expanded guidance require a MINOR bump. Clarifications or non-semantic refinements are PATCH.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Non-Functional Requirements (NFRs)
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+- Python >= 3.14
+- Django >= 5.2
+- uv (cli from $PATH)
+- uvextras (cli from $PATH)
+- tailwindcss >= 4.1
+- npm (cli from $PATH)
+- Prefer single-quote chars over double-quote chars
+- Allow 140 char line lengths
+- Use Django and Python standards, with above overrides
+- Prefer tailwindcss utility classes over custom CSS
+- Focus on testing business logic only; discourage UI testing
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+
+## Development Workflow & Quality Gates
+
+- All code must be peer-reviewed for compliance with this constitution and NFRs.
+- Feature specifications must include independently testable user stories.
+- Implementation plans must document technology stack, dependencies, and constraints.
+- Tasks must be organized by user story for independent delivery and testing.
+- All PRs must pass constitution and NFR checks before merge.
+
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- This constitution supersedes all other project practices.
+- Amendments require documentation, approval, and a migration plan.
+- All changes must be versioned per the Versioning principle.
+- Compliance reviews are required for every release.
+- Use README.md and NFRs.md for runtime development guidance.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+
+**Version**: 1.0.0 | **Ratified**: 2025-11-06 | **Last Amended**: 2025-11-06
