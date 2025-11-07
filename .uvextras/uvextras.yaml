@@ -1,4 +1,20 @@
 scripts:
+- name: create
+  is-local: false
+  depends-on:
+  - create_pnpm
+
+- name: create_pnpm
+  desc: Create pnpm node_modules
+  cmd: distrobox enter fedora-python-dx -- pnpm run build
+  use-python: false
+  is-local: true
+
+- name: envclean
+  is-local: false
+  options:
+    items_to_delete: assets/ node_modules/ .venv/
+
 
 - name: enable-dev
   is-local: false
@@ -9,3 +25,29 @@ scripts:
   is-local: false
   options:
     features: python
+    addons: /assets/,/db/
+
+
+- name: manage
+  desc: django admin tool
+  cmd: uv run manage.py
+  use-python: false
+  is-local: true
+
+- name: testmanage
+  desc: django admin tool with testing profile
+  use-python: false
+  cmd: DJANGO_SETTINGS_MODULE=budget_site.settings_tests uv run manage.py
+  is-local: true
+
+- name: django_start
+  desc: Use manage.py runserver to start (tasks.json)
+  cmd: uv run manage.py runserver
+  use-python: false
+  is-local: true
+
+- name: pnpm_start
+  desc: Use pnpm run start (tasks.json)
+  cmd: distrobox enter fedora-python-dx -- pnpm run start
+  use-python: false
+  is-local: true

@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Full Stack",
+            "dependsOn": [
+                "Tailwind Dev Server",
+                "Django Dev Server",
+            ]
+        },
+        {
+            "label": "Tailwind Dev Server",
+            "type": "shell",
+            "command": "uvextras",
+            "args": [
+                "run",
+                "pnpm_start"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Django Dev Server",
+            "type": "shell",
+            "command": "uvextras",
+            "args": [
+                "run",
+                "django_start",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$python"
+            ]
+        }
+    ]
+}

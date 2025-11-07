@@ -1,0 +1,21 @@
+{
+  "name": "pi-day-2026-with-py",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm install && vite build",
+    "start": "pnpm run build && pnpm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.16.1",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.10",
+    "tailwindcss": "^4.1.10",
+    "vite": "^7.0.0"
+  }
+}

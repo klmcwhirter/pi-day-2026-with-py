@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@layer base {
+    html {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-weight: bold;
+    }
+}
