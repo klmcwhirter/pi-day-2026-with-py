@@ -25,17 +25,18 @@ Although Python 3.14 has tools to enable utilizing multiple CPU cores, aggregati
 
 The Executor sub-classes utilize the [`pickle`](https://docs.python.org/3.14/library/pickle.html) protocol for intra-process (or inter-process respectively) serialization.
 
-And the mpmath library (used last year) relies on an internal binary representation that requires serialization / deserialization via (at least) the `mp.mathify` and `mp.nstr` functions designed for that purpose.
+And the mpmath library (used last year) relies on an [internal binary representation](https://mpmath.org/doc/current/technical.html#representation-of-numbers) that requires serialization / deserialization via (at least) the `mp.mathify` and `mp.nstr` functions designed for that purpose. But, as long as computation remains in the library's bounding context, its math operations remain _fast_.
 
-These operations can be slow especially if the right balance is not struck.
+Taken together, however, these operations can be slow especially if the right balance is not struck.
 
 A couple of naive thoughts to overcome this (or at least to attempt to manage the risks) are:
 
 * use sqlite db to store intermediate results to be aggregated later - this also involves serialization / deserialization in the data access layer
-* use shared object cache (e.g., keydb, memcachedb, in-memory sqlite db) - same issue - but isolates the site that needs to address the anticipated competing producers / consumers problem
+* use shared object cache (e.g., keydb, memcachedb, in-memory sqlite db) - same issue - but isolates the site that needs to address the anticipated competing producers / consumers problem - concurrency
 * rely on commonly used python modules that have extensions written in a lower level language (e.g., numpy, mpmath, etc.) to free up more time for the serialization / deserialization to improve perceived performance
 * utilize blob storage (in a db or set of files, etc.) to minimize the need for extraneous deserialization / object activation
   * note that most linux distros have an in-memory, ephemeral filesystem available at `/run/user/1000/` that can be utilized to store intermediate results without the need for deserialization
+  * this will require a dir / file naming scheme that will guarantee that no naming clashes between workers will occur
 
 But none of these seem to be obviously part of a best approach.
 
@@ -44,3 +45,4 @@ Hence, my continuing desire for further experimentation.
 ## Reference
 * [concurrent.futures.ProcessPoolExecutor](https://docs.python.org/3.14/library/concurrent.futures.html#processpoolexecutor)
 * [concurrent.futures.InterpreterPoolExecutor](https://docs.python.org/3.14/library/concurrent.futures.html#interpreterpoolexecutor)
+* [mpmath - Representation of numbers](https://mpmath.org/doc/current/technical.html#representation-of-numbers)
