@@ -25,7 +25,7 @@ scripts:
   is-local: false
   options:
     features: python
-    addons: /assets/,/db/
+    addons: /assets/,/db/,/node_modules/,/.venv/
 
 
 - name: manage

@@ -177,3 +177,5 @@ pyrightconfig.json
 
 /assets/
 /db/
+/node_modules/
+/.venv/
