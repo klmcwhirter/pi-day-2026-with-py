@@ -3,6 +3,8 @@ scripts:
   is-local: false
   depends-on:
   - create_pnpm
+  # options:
+  #   with-system:
 
 - name: create_pnpm
   desc: Create pnpm node_modules
